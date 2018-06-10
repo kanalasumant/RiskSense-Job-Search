@@ -1,0 +1,52 @@
+@import "~antd/dist/antd.css";
+
+body {
+  background-color: #f4f7fa;
+}
+
+.App {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 60px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.row-margin {
+  margin-bottom: 40px;
+}
+
+.search-text-shadow {
+  box-shadow: 0px 10px 22px -10px #8c8c8c;
+}
+
+.styled-divider {
+  margin: 0px;
+  height: 1.5px;
+  color: #f0f4f9;
+}
+
+.styled-filter-item {
+  margin: 12px 0;
+}
+
+.styled-clear-filter-item {
+  text-align: right;
+}
+
+.styled-pay-rate-separator {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.styled-select-filter {
+  width: 100%;
+}
