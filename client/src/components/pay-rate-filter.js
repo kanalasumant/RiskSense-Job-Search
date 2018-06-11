@@ -20,7 +20,7 @@ export default ({
         min={data.minPayValue}
         max={data.maxPayValue - 1}
         style={{ width: 50 }}
-        value={localState.minPayValue || data.defaultMaxPayValue}
+        value={localState.minPayValue}
         onChange={minPayValueChange}
       />
       <span className="styled-pay-rate-separator">-</span>
@@ -28,7 +28,7 @@ export default ({
         min={data.minPayValue + 1}
         max={data.maxPayValue}
         style={{ width: 50 }}
-        value={localState.maxPayValue || data.defaultMinPayValue}
+        value={localState.maxPayValue}
         onChange={maxPayValueChange}
       />
       <Slider
@@ -38,10 +38,7 @@ export default ({
         range={true}
         defaultValue={[data.defaultMinPayValue, data.defaultMaxPayValue]}
         onChange={togglePayRateSlider}
-        value={[
-          localState.minPayValue || data.defaultMinPayValue,
-          localState.maxPayValue || data.defaultMaxPayValue
-        ]}
+        value={[localState.minPayValue, localState.maxPayValue]}
       />
       <Checkbox
         checked={localState.profilesWithoutPayRate}
