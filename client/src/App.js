@@ -6,7 +6,7 @@ import { Row, Col } from "antd";
 import Filters from "./components/filters";
 import Jobs from "./components/jobs";
 
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   render() {
@@ -26,7 +26,7 @@ class App extends Component {
             />
           </Col>
         </Row>
-        <Row gutter={16} className="row-margin">
+        <Row gutter={32} className="row-margin">
           <Col span={6}>
             <Filters />
           </Col>

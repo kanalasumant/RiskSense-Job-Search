@@ -2,8 +2,6 @@ import React from "react";
 
 import { Row, Col } from "antd";
 
-import "../App.css";
-
 export default ({ title, clearFilter }) => {
   return (
     <Row className="styled-filter-item">
