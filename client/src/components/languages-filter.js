@@ -4,15 +4,22 @@ import { Select } from "antd";
 
 import FilterItem from "./filter-item";
 
-export default ({ title, data, toggleLanguagesFilter }) => {
+export default ({
+  title,
+  data,
+  localState,
+  clearLanguagesFilter,
+  toggleLanguagesFilter
+}) => {
   return (
     <Fragment>
-      <FilterItem title={title} clearFilter={this.clearFilter} />
+      <FilterItem title={title} clearFilter={clearLanguagesFilter} />
       <Select
         mode="multiple"
         style={{ width: "100%" }}
         placeholder="Enter a language"
         onChange={toggleLanguagesFilter}
+        value={localState}
       >
         {data.map(item => {
           return (

@@ -5,6 +5,7 @@ $secondary-color: #4bd3ff;
 
 body {
   background-color: #f4f7fa;
+  font-family: Helvetica, sans-serif;
 }
 
 .App {
@@ -15,12 +16,16 @@ body {
 .App-header {
   background-color: #222;
   height: 60px;
+  margin-bottom: 20px;
   padding: 20px;
   color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .App-title {
   font-size: 1.5em;
+  color: $secondary-color;
 }
 
 .row-margin {
@@ -42,7 +47,17 @@ body {
 }
 
 .styled-clear-filter-item,
-.styled-sortby-item,
+.styled-sortby-item {
+  cursor: pointer;
+  color: #8d9298;
+  text-align: right;
+}
+
+.styled-clear-filter-item:hover,
+.styled-sortby-item:hover {
+  color: #434446;
+}
+
 .styled-job-info-item-payrate {
   text-align: right;
 }

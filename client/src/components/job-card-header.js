@@ -2,9 +2,7 @@ import React from "react";
 
 import { Row, Col, Select } from "antd";
 
-import ConfigData from "../config-data";
-
-export default ({ sortBySelectedOption }) => {
+export default ({ data, sortBySelectedOption }) => {
   return (
     <Row className="styled-jobs-card-header">
       <Col span={12}>
@@ -17,14 +15,14 @@ export default ({ sortBySelectedOption }) => {
           </Col>
           <Col span={12}>
             <Select
-              defaultValue={ConfigData.sortOptions[0]}
+              defaultValue={data[0].value}
               className="styled-select-filter"
               onChange={sortBySelectedOption}
             >
-              {ConfigData.sortOptions.map(item => {
+              {data.map(item => {
                 return (
-                  <Select.Option key={item} value={item}>
-                    {item}
+                  <Select.Option key={item.value} value={item.value}>
+                    {item.label}
                   </Select.Option>
                 );
               })}

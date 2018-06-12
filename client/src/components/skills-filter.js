@@ -4,15 +4,22 @@ import { Select } from "antd";
 
 import FilterItem from "./filter-item";
 
-export default ({ title, data, toggleSkillsFilter }) => {
+export default ({
+  title,
+  data,
+  localState,
+  clearSkillsFilter,
+  toggleSkillsFilter
+}) => {
   return (
     <Fragment>
-      <FilterItem title={title} clearFilter={this.clearFilter} />
+      <FilterItem title={title} clearFilter={clearSkillsFilter} />
       <Select
         mode="multiple"
         className="styled-select-filter"
         placeholder="Select skills from the list"
         onChange={toggleSkillsFilter}
+        value={localState}
       >
         {data.map(item => {
           return (

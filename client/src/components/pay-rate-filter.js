@@ -8,6 +8,7 @@ export default ({
   title,
   data,
   localState,
+  clearPayRateFilter,
   minPayValueChange,
   maxPayValueChange,
   togglePayRateSlider,
@@ -15,7 +16,7 @@ export default ({
 }) => {
   return (
     <Fragment>
-      <FilterItem title={title} clearFilter={this.clearFilter} />
+      <FilterItem title={title} clearFilter={clearPayRateFilter} />
       <InputNumber
         min={data.minPayValue}
         max={data.maxPayValue - 1}
