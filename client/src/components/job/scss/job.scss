@@ -1,0 +1,57 @@
+@import "../../../App.scss";
+
+.styled-jobs-card {
+  width: 100%;
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.styled-jobs-card-header {
+  vertical-align: center;
+}
+
+.styled-job-info-item-header {
+  margin: 30px 0;
+}
+
+.styled-job-info-item-title {
+  margin-right: 10px;
+  display: inline;
+}
+
+.styled-job-info-item-bolder {
+  color: $bold-color;
+  font-weight: bold;
+}
+
+.styled-job-info-item-bold {
+  font-weight: 500;
+}
+
+.styled-job-info-item-payrate {
+  text-align: right;
+}
+
+.styled-job-info-item-company-text {
+  padding-left: 3px;
+  padding-right: 8px;
+}
+
+.styled-job-info-item-company-primary-color {
+  color: $primary-color;
+}
+
+.styled-job-info-item-company-secondary-color {
+  color: $secondary-color;
+}
+
+.styled-job-info-item-company-description {
+  color: $tertiary-color;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.styled-job-info-item-divider {
+  height: 1.5px;
+  color: $divider-color;
+}

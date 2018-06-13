@@ -1,6 +1,6 @@
 import React from "react";
 
-import MainContainer from "./components/main-container";
+import MainContainer from "./components/containers/main-container";
 
 import "./App.scss";
 

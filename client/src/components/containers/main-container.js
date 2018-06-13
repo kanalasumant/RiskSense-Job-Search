@@ -3,26 +3,24 @@ import React, { Component, Fragment } from "react";
 import { message, Divider, Row, Col } from "antd";
 import Input from "antd/lib/input";
 
-import ConfigData from "../config-data";
-import AvailabilityFilter from "./availability-filter";
-import JobTypeFilter from "./job-type-filter";
-import PayRateFilter from "./pay-rate-filter";
-import FilterItem from "./filter-item";
-import ExperienceFilter from "./experience-filter";
-import CountriesFilter from "./countries-filter";
-import LanguagesFilter from "./languages-filter";
-import SkillsFilter from "./skills-filter";
-import Jobs from "./jobs";
+import ConfigData from "../../config-data";
+import AvailabilityFilter from "../filters/availability-filter";
+import JobTypeFilter from "../filters/job-type-filter";
+import PayRateFilter from "../filters/pay-rate-filter";
+import FilterItem from "../filters/filter-item";
+import ExperienceFilter from "../filters/experience-filter";
+import CountriesFilter from "../filters/countries-filter";
+import LanguagesFilter from "../filters/languages-filter";
+import SkillsFilter from "../filters/skills-filter";
+import Jobs from "../job/jobs";
 
-import "../App.scss";
+import {
+  formatSearchQuery,
+  handleOverflow,
+  sideEffectApiRequestJobs
+} from "./util/helper";
 
-const handleOverflow = (value, element) => {
-  return element === "minPayValue"
-    ? value >= ConfigData.payRate.minPayValue &&
-        value <= ConfigData.payRate.maxPayValue - 1
-    : value >= ConfigData.payRate.minPayValue + 1 &&
-        value <= ConfigData.payRate.maxPayValue;
-};
+import "./scss/main-container.scss";
 
 const defaultState = {
   availability: { hourly: false, "part-time": false, "full-time": false },
@@ -171,40 +169,15 @@ export default class Filters extends Component {
   searchQuery = value =>
     this.setState(
       {
-        searchQuery:
-          value === ""
-            ? []
-            : [].concat(
-                ...value
-                  .trim()
-                  .split(",")
-                  .map(item => item.match(/\S+/g))
-              )
+        searchQuery: formatSearchQuery(value)
       },
-      () => this.sideEffectApiRequestJobs()
+      async () => this.renderToJobs(await sideEffectApiRequestJobs(this.state))
     );
 
-  renderToJobs = searchResults => this.setState({ searchResults });
-
-  sideEffectApiRequestJobs = async () => {
-    try {
-      const { searchResults, ...state } = this.state;
-      const result = await fetch("/api/query", {
-        method: "POST",
-        body: JSON.stringify({
-          state
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
-      });
-      const resJson = await result.json();
-      this.renderToJobs(resJson);
-    } catch (err) {
-      message("Something went wrong!");
-    }
-  };
+  renderToJobs = searchResults =>
+    this.setState({
+      searchResults
+    });
 
   render() {
     return (

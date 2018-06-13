@@ -1,0 +1,15 @@
+@import "../../../App.scss";
+
+.row-margin {
+  margin-bottom: 40px;
+}
+
+.search-text-shadow {
+  box-shadow: 0px 10px 22px -10px $tertiary-color;
+}
+
+.styled-divider {
+  margin: 0px;
+  height: 1.5px;
+  color: $divider-color;
+}
