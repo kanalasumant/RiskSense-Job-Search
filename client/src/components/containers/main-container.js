@@ -171,7 +171,20 @@ export default class Filters extends Component {
       {
         searchQuery: formatSearchQuery(value)
       },
-      async () => this.renderToJobs(await sideEffectApiRequestJobs(this.state))
+      async () => {
+        try {
+          const result = await sideEffectApiRequestJobs(this.state);
+          if (result.status >= 400 && result.status <= 500) {
+            message.error("Something went wrong. Please try again later. . .");
+            return false;
+          } else {
+            const jsonResult = await result.json();
+            return this.renderToJobs(jsonResult);
+          }
+        } catch (err) {
+          message.error("Something went wrong. Please try again!");
+        }
+      }
     );
 
   renderToJobs = searchResults =>

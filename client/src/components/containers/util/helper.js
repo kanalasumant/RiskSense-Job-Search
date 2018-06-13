@@ -19,23 +19,18 @@ const handleOverflow = (value, element) => {
 };
 
 const sideEffectApiRequestJobs = async data => {
-  try {
-    const { searchResults, ...state } = data;
-    const result = await fetch("/api/query", {
-      method: "POST",
-      body: JSON.stringify({
-        state
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    });
-    const resJson = await result.json();
-    return resJson;
-  } catch (err) {
-    console.error(err);
-  }
+  const { searchResults, ...state } = data;
+  const result = await fetch("/api/query", {
+    method: "POST",
+    body: JSON.stringify({
+      state
+    }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  });
+  return result;
 };
 
 export { formatSearchQuery, handleOverflow, sideEffectApiRequestJobs };

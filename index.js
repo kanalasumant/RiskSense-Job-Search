@@ -19,43 +19,51 @@ const {
 const jobsArray = require("./jobs.json");
 
 app.post("/api/query", jsonParser, (req, res) => {
-  const { state } = req.body;
+  try {
+    const { state } = req.body;
 
-  const filteredCountries = filterArray(state.countries, "country", jobsArray);
+    const filteredCountries = filterArray(
+      state.countries,
+      "country",
+      jobsArray
+    );
 
-  const filteredLanguages = filterArray(
-    state.languages,
-    "language",
-    filteredCountries
-  );
+    const filteredLanguages = filterArray(
+      state.languages,
+      "language",
+      filteredCountries
+    );
 
-  const filteredExperience = filterWithKeyword(
-    state.experience,
-    "experience",
-    filteredLanguages
-  );
+    const filteredExperience = filterWithKeyword(
+      state.experience,
+      "experience",
+      filteredLanguages
+    );
 
-  const filteredJobType = filterWithKeyword(
-    state.jobType,
-    "jobType",
-    filteredExperience
-  );
+    const filteredJobType = filterWithKeyword(
+      state.jobType,
+      "jobType",
+      filteredExperience
+    );
 
-  const availabilityFilter = filterAvailability(
-    state.availability,
-    filteredJobType
-  );
+    const availabilityFilter = filterAvailability(
+      state.availability,
+      filteredJobType
+    );
 
-  const payRateFilter = filterPayRate(state.payRate, availabilityFilter);
+    const payRateFilter = filterPayRate(state.payRate, availabilityFilter);
 
-  const queryFilter = filterQuery(
-    [state.searchQuery, state.skills],
-    payRateFilter
-  );
+    const queryFilter = filterQuery(
+      [state.searchQuery, state.skills],
+      payRateFilter
+    );
 
-  const sortByFilter = specificSort(state.sortBy, queryFilter);
+    const sortByFilter = specificSort(state.sortBy, queryFilter);
 
-  res.json(sortByFilter);
+    res.json(sortByFilter);
+  } catch (err) {
+    res.sendStatus(500);
+  }
 });
 
 app.get("*", (req, res) => {
