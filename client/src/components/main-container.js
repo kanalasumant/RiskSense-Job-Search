@@ -25,7 +25,7 @@ const handleOverflow = (value, element) => {
 };
 
 const defaultState = {
-  availability: "",
+  availability: { hourly: false, "part-time": false, "full-time": false },
   countries: [],
   experience: "",
   jobType: "",
@@ -37,13 +37,18 @@ const defaultState = {
   },
   searchQuery: [],
   skills: [],
-  sortBy: ConfigData.sortOptions[0]
+  sortBy: ConfigData.sortOptions[0].value,
+  searchResults: []
 };
 
 export default class Filters extends Component {
   state = defaultState;
 
-  clearAllFilters = () => this.setState(defaultState);
+  clearAllFilters = () =>
+    this.setState(prevState => ({
+      ...defaultState,
+      searchResults: prevState.searchResults
+    }));
 
   clearGenericFilter = filterName =>
     this.setState({
@@ -66,9 +71,6 @@ export default class Filters extends Component {
 
   clearSkillsFilter = () => this.clearGenericFilter("skills");
 
-  toggleAvailabilityFilter = value =>
-    this.toggleGenericFilter("availability", value);
-
   toggleCountriesFilter = value => this.toggleGenericFilter("countries", value);
 
   toggleExperienceFilter = value =>
@@ -80,12 +82,28 @@ export default class Filters extends Component {
 
   toggleSkillsFilter = value => this.toggleGenericFilter("skills", value);
 
-  toggleSortByFilter = value => this.toggleGenericFilter("sortBy", value);
-
+  toggleSortByFilter = value => {
+    const searchResults = this.state.searchResults.sort(
+      (a, b) => a[value] < b[value]
+    );
+    this.setState({
+      sortBy: value,
+      searchResults
+    });
+  };
   toggleGenericFilter = (filterName, value) =>
     this.setState({
       [filterName]: value
     });
+
+  toggleAvailabilityFilter = value => {
+    this.setState(prevState => ({
+      availability: {
+        ...prevState.availability,
+        [value]: !prevState.availability[value]
+      }
+    }));
+  };
 
   togglePayRateSlider = value => {
     const [minPayValue, maxPayValue] = value;
@@ -153,29 +171,39 @@ export default class Filters extends Component {
   searchQuery = value =>
     this.setState(
       {
-        searchQuery: [].concat(
-          ...value
-            .trim()
-            .split(",")
-            .map(item => item.match(/\S+/g))
-        )
+        searchQuery:
+          value === ""
+            ? []
+            : [].concat(
+                ...value
+                  .trim()
+                  .split(",")
+                  .map(item => item.match(/\S+/g))
+              )
       },
       () => this.sideEffectApiRequestJobs()
     );
 
+  renderToJobs = searchResults => this.setState({ searchResults });
+
   sideEffectApiRequestJobs = async () => {
-    const result = await fetch("/api/query", {
-      method: "POST",
-      body: JSON.stringify({
-        state: this.state
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    });
-    const resJson = await result.json();
-    console.log(resJson);
+    try {
+      const { searchResults, ...state } = this.state;
+      const result = await fetch("/api/query", {
+        method: "POST",
+        body: JSON.stringify({
+          state
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      });
+      const resJson = await result.json();
+      this.renderToJobs(resJson);
+    } catch (err) {
+      message("Something went wrong!");
+    }
   };
 
   render() {
@@ -251,6 +279,7 @@ export default class Filters extends Component {
           </Col>
           <Col span={12}>
             <Jobs
+              results={this.state.searchResults}
               data={ConfigData.sortOptions}
               toggleSortByFilter={this.toggleSortByFilter}
             />

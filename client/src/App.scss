@@ -2,10 +2,11 @@
 
 $primary-color: #56d48f;
 $secondary-color: #4bd3ff;
+$tertiary-color: #929292;
 
 body {
   background-color: #f4f7fa;
-  font-family: Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica", "sans-serif";
 }
 
 .App {
@@ -15,8 +16,8 @@ body {
 
 .App-header {
   background-color: #222;
-  height: 60px;
-  margin-bottom: 20px;
+  height: 70px;
+  margin-bottom: 30px;
   padding: 20px;
   color: white;
   border-bottom-left-radius: 20px;
@@ -33,6 +34,7 @@ body {
 }
 
 .search-text-shadow {
+  // height: 60px;
   box-shadow: 0px 10px 22px -10px #8c8c8c;
 }
 
@@ -49,7 +51,7 @@ body {
 .styled-clear-filter-item,
 .styled-sortby-item {
   cursor: pointer;
-  color: #8d9298;
+  color: $tertiary-color;
   text-align: right;
 }
 
@@ -60,6 +62,34 @@ body {
 
 .styled-job-info-item-payrate {
   text-align: right;
+}
+
+.styled-job-info-item-bolder {
+  color: rgba(39, 37, 37, 0.85);
+  font-weight: bold;
+}
+
+.styled-job-info-item-bold {
+  font-weight: 500;
+}
+
+.styled-job-info-item-company-text {
+  padding-left: 3px;
+  padding-right: 8px;
+}
+
+.styled-job-info-item-company-primary-color {
+  color: $primary-color;
+}
+
+.styled-job-info-item-company-secondary-color {
+  color: $secondary-color;
+}
+
+.styled-job-info-item-company-description {
+  color: $tertiary-color;
+  font-weight: 500;
+  margin-top: 20px;
 }
 
 .styled-pay-rate-separator {

@@ -6,11 +6,11 @@ export default {
     },
     {
       label: "Part-Time (20 hrs/wk)",
-      boolValue: "partTime"
+      boolValue: "part-time"
     },
     {
       label: "Full-Time (40 hrs/wk)",
-      boolValue: "fullTime"
+      boolValue: "full-time"
     }
   ],
   countries: [

@@ -1,6 +1,66 @@
 [
   {
+    "availability": "full-time",
+    "dateAdded": 1528822728356000,
+    "role": {
+      "title": "ReactJS Apollo Link State Query Help",
+      "company": "Price Is Right",
+      "description":
+        "Need help to figure out how to pass parameter to a @client query using Apollo Link State, using default resolver (not custom re",
+      "area": "HQ: Los Angeles, CA, United States"
+    }
+  },
+  {
     "availability": "hourly",
+    "dateAdded": 1528836919786000,
+    "role": {
+      "title": "Wordpress and PHP Developer",
+      "company": "GamoVation B.V.",
+      "description":
+        "For a book website we are looking for an experienced PHP and Mysql developer. Currently the website runs on a Mysql database together with PHP. We have created a new, responsive, design. This design is already created in HTML and CSS.The website consists of aprox. 3700 authors and 20000 books. We need somebody who is able to fully recreate the website in PHP and Mysql and create the CMS to add new authors. Also some new functionalities will be added.Please note: we don't want to use a PHP framework, we want the code to be made from scratch, fully custom.We will use Phpmyadmin for Mysql management and PHP 5.5 (however, it is possible to upgrade to the latest PHP version if needed).We fully explained each page in detail in a document of aprox. 30 pages. More information will be given when we think there is a match between us",
+      "area": "HQ: Zwolle, Overijssel, Netherlands"
+    },
+    "payRate": 40
+  },
+  {
+    "availability": "part-time",
+    "dateAdded": 1528842058346000,
+    "jobType": "ADVERTISING_AND_MARKETING",
+    "experience": "EXPERIENCED",
+    "role": {
+      "title": "Marketing Manager",
+      "company": "IBC",
+      "description":
+        "What we want is to hire someone who has tons of experience ; someone with the charisma, people skills and confidence to manage a team, and the practical knowledge to help create, contribute to, and oversee the actual campaigns.Please DO NOT apply or accept the invitation if you do not have experience with the aboveOtherwise, if you are experienced and up to a new challenge, and interested in LEARNING and GROWING in a FAST-PACED and LEAN business, please apply, we would love to chat!",
+      "area": "HQ: Dover, Delaware, United States"
+    },
+    "payRate": 70
+  },
+  {
+    "availability": "full-time",
+    "dateAdded": 1528854081047000,
+    "jobType": "COMPUTER_AND_IT",
+    "experience": "ENTRY_LEVEL",
+    "role": {
+      "title": "Web Developer",
+      "company": "IBC",
+      "description":
+        "Interested applicants may apply directly to our website here: https://secure.collage.co/jobs/ahavadigital/6753 Ahava Digital’s",
+      "area": "HQ: Victoria, British Columbia, Canada"
+    },
     "country": "CA"
+  },
+  {
+    "availability": "part-time",
+    "dateAdded": 1528860890510000,
+    "jobType": "ADVERTISING_AND_MARKETING",
+    "language": "kor",
+    "role": {
+      "title": "Product Marketing",
+      "company": "RingRose",
+      "description":
+        "We are looking for a native Japanese, Chinese, or Korean speaker who can help plan and execute market strategies and product im",
+      "area": "HQ: Vancouver, BC, Canada"
+    }
   }
 ]

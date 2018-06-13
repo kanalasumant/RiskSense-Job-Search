@@ -18,7 +18,7 @@ export default ({
         return (
           <Row key={item.label}>
             <Checkbox
-              checked={localState === item.boolValue}
+              checked={localState[item.boolValue]}
               onChange={() => toggleAvailabilityFilter(item.boolValue)}
             >
               {item.label}
